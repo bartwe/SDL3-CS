@@ -32,12 +32,6 @@ namespace SDL
 
         public static implicit operator Utf8String(ReadOnlySpan<byte> raw)
         {
-            if (raw == null)
-                return new Utf8String(null);
-
-            if (raw.Length == 0)
-                return new Utf8String(new ReadOnlySpan<byte>([0]));
-
             if (raw[^1] != 0)
             {
                 byte[] copy = new byte[raw.Length + 1];
